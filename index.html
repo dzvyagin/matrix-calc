@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>матричный калькулятор, Данила Звягин</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/matrix.css">
+</head>
+
+<body>
+    <header>
+        <!-- TODO написать хедер -->
+    </header>
+    <div id="main-content" class="main-content">
+        <div class="content content-page">
+            <h1>Матричный калькулятор</h1>
+            <div class="num-calc num-calc-full-width">
+                <div class="matrix-calculator">
+                    <div class="matrix-calculator__wrapper">
+                        <div class="matrix-calculator-block first-matrix" id="first-matrix-block">
+                            <div class="caption">
+                                Матрица А<span id="first-matrix-size"><sub>3&#215;3</sub></span>
+                            </div>
+                            <div class="matrix-clear"><span class="fa fa-eraser" title="очистить"></span></div>
+                            <div class="matrix" id="first-matrix" ondrop="drop(event)">
+                                <div class="matrix-brackets">
+                                    <table id="first-matrix-table">
+                                        <tr>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <select class="first-matrix" id="first-matrix-rows" onchange="changeSize('#first-matrix')">
+                                <option>1</option>
+                                <option>2</option>
+                                <option selected>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                            </select>
+                            <span class="first-matrix">&#215;</span>
+                            <select class="first-matrix" id="first-matrix-cols" onchange="changeSize('#first-matrix')">
+                                <option>1</option>
+                                <option>2</option>
+                                <option selected>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                            </select>
+                        </div>
+                        <div class="matrix-calculator-block swap matrix-calculator-block-hidden">
+                            <input type="submit" value="&hArr;" id="swap" class="no-display">
+                        </div>
+                        <div class="second-matrix-hidden matrix-calculator-block second-matrix" id="second-matrix-block">
+                            <div class="caption">
+                                Матрица B<span id="second-matrix-size"><sub>3&#215;3</sub></span>
+                            </div>
+                            <div class="matrix-clear"><span class="fa fa-eraser" title="очистить"></span></div>
+                            <div class="matrix" id="second-matrix" ondrop="drop(event)">
+                                <div class="matrix-brackets">
+                                    <table id="second-matrix-table">
+                                        <tr>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                            <td><input type="text" placeholder="0" size=10></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <select class="second-matrix-hidden second-matrix" id="second-matrix-rows"
+                                onchange="changeSize('#second-matrix')">
+                                <option>1</option>
+                                <option>2</option>
+                                <option selected>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                            </select>
+                            <span class="second-matrix second-matrix-hidden">&#215;</span>
+                            <select class="second-matrix-hidden second-matrix" id="second-matrix-cols"
+                                onchange="changeSize('#second-matrix')">
+                                <option>1</option>
+                                <option>2</option>
+                                <option selected>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="matrix-calculator-block">
+                        <div class="matrix-calculator-control">
+                            <div id="matrix-checkboxes">
+                                <label class="switch-checkbox"><input type="checkbox" id="first-matrix-check"
+                                        checked><span class="switch-checkbox-text">Матрица&nbsp;A</span></label>
+                                <label class="switch-checkbox"><input type="checkbox" id="second-matrix-check"><span
+                                        class="switch-checkbox-text">Матрица&nbsp;B</span></label>
+                            </div>
+                            <span class='error-text' id="no-matrix"><i></i></span>
+                            <div id="calculator-option">
+                                <select id="calc-option">
+                                    <option value='det'>Определитель</option>
+                                    <option value='transpose'>Транспонировать</option>
+                                    <option value='rank'>Ранг</option>
+                                    <option value='track'>След</option>
+                                    <option value='pow'>Возвести в степень</option>
+                                    <option value='const-mult'>Умножить на число</option>
+                                    <option value='reverse'>Обратная</option>
+                                    <option value='triangle'>Треугольный вид</option>
+                                    <option value='stepped'>Ступенчатый вид</option>
+                                    <option value='lu-decomposition'>LU разложение</option>
+                                    <option value='elementary-transforms'>Элементарные преобразования</option>
+                                    <option value='expression'>Вычислить выражение</option>
+                                </select>
+                                <div class="additional-options no-display" id="pow-options-block">
+                                    <b>Показатель степени: </b><input type="text" id="power" placeholder="2"
+                                        maxlength="5" onfocus="this.placeholder=''" onblur="this.placeholder='2'"
+                                        size="1">
+                                </div>
+                                <div class="additional-options no-display" id="const-options-block">
+                                    <b>Число: </b><input type="text" id="parameter" placeholder="1/2"
+                                        onfocus="this.placeholder=''" onblur="this.placeholder='1/2'" maxlength="100"
+                                        size="1">
+                                </div>
+                                <div id="operation-error"></div>
+                                <div class="additional-options no-display" id="expression-options-block">
+                                    <b>Выражение: </b><input type="text" id="expression" placeholder="2A^T + A^2 - B"
+                                        onfocus="this.placeholder=''" onblur="this.placeholder='2A^T + A^2 - B'"
+                                        maxlength="500" size="20">
+                                    <div id="expression-error"></div>
+                                </div>
+                                <div class="additional-options no-display" id="reverse-matrix-options-block">
+                                    <b>Метод поиска обратной матрицы</b><br>
+                                    <label class="switch-checkbox"><input type="checkbox" id="reverseGauss"
+                                            checked><span class="switch-checkbox-text">Метод
+                                            Гауса-Жордана</span></label><br>
+                                    <label class="switch-checkbox"><input type="checkbox" id="reverseAlgAddition"><span
+                                            class="switch-checkbox-text">Метод союзной матрицы</span></label>
+                                </div>
+                                <div class="additional-options no-display" id="system-options-block">
+                                    <b>Метод решения СЛАУ AX=B</b><br>
+                                    <label class="switch-checkbox"><input type="checkbox" id="systemGauss" checked><span
+                                            class="switch-checkbox-text">Метод Гауса</span></label><br>
+                                    <label class="switch-checkbox"><input type="checkbox" id="systemMatrix"
+                                            checked><span class="switch-checkbox-text">Матричный метод
+                                        </span></label><br>
+                                    <label class="switch-checkbox"><input type="checkbox" id="systemKramer"
+                                            checked><span class="switch-checkbox-text">Метод Крамера</span></label>
+                                </div>
+                                <div class="additional-options no-display" id="elementary-transforms-options-block">
+                                    <b>Элементарное преобразование</b><br>
+                                    <select id="elementary-transforms-option"
+                                        onchange="changeElementaryTransformsOption(this)">
+                                        <option value="row-swap">Переставить строки</option>
+                                        <option value="mult-row-const">Умножить строку</option>
+                                        <option value="add-row-const">Прибавить к строке</option>
+                                        <option value="col-swap">Переставить столбцы</option>
+                                        <option value="mult-col-const">Умножить столбец</option>
+                                        <option value="add-col-const">Прибавить к столбцу</option>
+                                    </select>
+                                    <input type="text" id="transform-param-1" placeholder="1" maxlength="2"
+                                        onfocus="this.placeholder=''" onblur="this.placeholder='1'" size="1">
+                                    <span id="transform-text-1">и</span>
+                                    <input type="text" id="transform-param-2" placeholder="2" maxlength="2"
+                                        onfocus="this.placeholder=''" onblur="this.placeholder='2'" size="1">
+                                    <span class="no-display" id="transform-text-2"></span>
+                                    <input class="no-display" type="text" id="transform-param-3" placeholder="1/2"
+                                        maxlength="100" onfocus="this.placeholder=''" onblur="this.placeholder='1/2'"
+                                        size="1">
+                                </div>
+                            </div>
+
+                            <!-- TODO matrix fraction output -->
+                            <!-- <div id="calculate-print-options">
+                                <label for="print-option">Выводить числа в виде</label>
+                                <select id="print-option" onchange="changePrint(this)">
+                                    <option value="1" selected>неправильных дробей</option>
+                                    <option value="0">правильных дробей</option>
+                                    <option value="2">десятичных дробей</option>
+                                </select>
+                                <span class="no-display" id="print-length">с <input id="print-length-value"
+                                        type="number" min="0" max="20" placeholder="2" onfocus="this.placeholder=''"
+                                        onblur="this.placeholder='2'" size="1"> знаками после запятой</span>
+                            </div> -->
+                            <div class="calculate-buttons">
+                                <input type="submit" class="calculate-btn" value="Посчитать">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-display" id="errors-block"></div>
+                <div class="calc-result" id="result"></div>
+                <p class="calc-statistics righted"><span class="fa fa-bar-chart"></span>Выполнено действий: <span
+                        id="stat-value"></span></p>
+            </div>
+
+            <!-- TODO теория переписать -->
+            <!-- <h2>Как пользоваться калькулятором матриц</h2>
+            <ol>
+                <li>Выберите матрицу (или матрицы) с помощью переключателей (<label class="switch-checkbox"><input
+                            type="checkbox" checked><span class="switch-checkbox-text"></span></label>)</li>
+                <li>Укажите размер с помощью выпадающих списков под матрицей (<select disabled="disabled">
+                        <option>3</option>
+                    </select> × <select disabled="disabled">
+                        <option>3</option>
+                    </select>)</li>
+                <li>Заполните элементы (<i>нулевые элементы можно не заполнять.</i>)</li>
+                <li>Выберите в выпадающем списке требуемую функцию и, если требуется, введите дополнительные параметры.
+                </li>
+                <li>Нажмите кнопку <input type="submit" class="calculate-btn"
+                        onclick="yaCounter45321723.reachGoal('matrix-calc-pressed'); return true;" value="Посчитать">.
+                </li>
+                <li>Если вывод чисел не устраивает, просто поменяйте его — доступны три варианта представления:
+                    <i>правильные дроби</i> (2<div class="fraction">
+                        <div class="numerator">2</div>
+                        <div class="denumerator">5</div>
+                    </div>), <i>неправильные дроби</i> (<div class="fraction">
+                        <div class="numerator">12</div>
+                        <div class="denumerator">5</div>
+                    </div>) и <i>десятичные дроби</i> (2.4) с указанием числа знаков после запятой.</li>
+            </ol>
+            <h2>Ввод данных и функционал</h2>
+            <ul>
+                <li>В качестве элементов используются обыкновенные правильные дроби (<code>1/2</code>,
+                    <code>29/7</code>, <code>-1/125</code>), десятичные дроби (<code>12</code>, <code>-0.01</code>,
+                    <code>3.14</code>), а также числа в экспоненциальной форме (<code>2.5e3</code>, <code>1e-2</code>).
+                </li>
+                <li>Длина вводимых чисел <a
+                        href="/poleznoe/dlinnaya-veschestvennaya-ariphmetica-pishem-svoi-veschestvennie-chisla-na-c-plus-plus">ничем
+                        не ограничена</a>, вводите хоть 1000 цифр, правда, возможно, придётся подождать, пока будут идти
+                    вычисления!</li>
+                <li>Используйте для работы <b>одну или две матрицы</b> (чтобы выполнять операции с двумя матрицами,
+                    передвиньте переключатель второй матрицы).</li>
+                <li><b>Вставляйте результат</b> в A или B с помощью кнопок "Вставить в A" и "Вставить в B".</li>
+                <li><b>Перетаскивайте (drag-and-drop) матрицы</b> из результата в A или B.</li>
+                <li>Используйте стрелки (<code>&#8592;</code>, <code>&#8593;</code>, <code>&#8594;</code>,
+                    <code>&#8595;</code>) для перемещения по элементам</li>
+            </ul>
+            <h2>Что умеет наш калькулятор матриц?</h2>
+            <b>С одной матрицей (только <label class="switch-checkbox"><input type="checkbox" checked
+                        disabled="disabled"><span class="switch-checkbox-text">Матрица&nbsp;A</span></label> или <label
+                    class="switch-checkbox"><input type="checkbox" checked disabled="disabled"><span
+                        class="switch-checkbox-text">Матрица&nbsp;B</span></label>)</b>
+            <ul>
+                <li>Транспонировать;</li>
+                <li>Вычислять <a href="https://ru.wikipedia.org/wiki/Определитель" target="_blank">определитель</a>;
+                </li>
+                <li>Находить ранг и след;</li>
+                <li>Возводить <a href="/calculators/calculator-stepenej">в степень</a>;</li>
+                <li>Умножать на число;</li>
+                <li>Вычислять <a href="https://ru.wikipedia.org/wiki/Обратная_матрица" target="_blank">обратную
+                        матрицу</a>;</li>
+                <li>Приводить к треугольному и ступенчатому вид;</li>
+                <li>Находить LU-разложение;</li>
+                <li>Выполнять <a href="https://ru.wikipedia.org/wiki/Элементарные_преобразования_матрицы"
+                        target="_blank">элементарные преобразования</a>;</li>
+                <li>Выполнять действия с выражениями, содержащими матрицы.</li>
+            </ul>
+            <b>С двумя матрицами (<label class="switch-checkbox"><input type="checkbox" checked
+                        disabled="disabled"><span class="switch-checkbox-text">Матрица&nbsp;A</span></label> и <label
+                    class="switch-checkbox"><input type="checkbox" checked disabled="disabled"><span
+                        class="switch-checkbox-text">Матрица&nbsp;B</span></label>)</b>
+            <ul>
+                <li>Складывать;</li>
+                <li>Вычитать;</li>
+                <li>Умножать;</li>
+                <li>Решать системы линейных алгебраических уравнений (СЛАУ) вида AX=B;</li>
+                <li>Выполнять действия с выражениями, содержащими матрицы.</li>
+            </ul>
+            <h2 id="expression-info">Вычисление выражений с матрицами</h2>
+            <p>Вы можете вычислять различные арифметические выражения с матрицами, а также с результатами некоторых
+                преобразований этих матриц.</p>
+            <h3>Из чего могут состоять выражения?</h3>
+            <ul>
+                <li>Целые и дробные числа</li>
+                <li>Матрицы A, B</li>
+                <li>Знаки арифметических действий: <code>+</code> <code>-</code> <code>*</code> <code>/</code></li>
+                <li>Круглые скобки для изменения приоритета операций: <code>(</code> <code>)</code></li>
+                <li>Транспонирование: <code>^T</code></li>
+                <li>Возведение в <u>целую</u> степень: <code>^</code></li>
+            </ul>
+            <h3>Примеры корректных выражений</h3>
+            <ul>
+                <li>Cложение двух матриц: <code>A+B</code>, <code>(A)+(B)</code>, <code>((A) + B)</code></li>
+                <li>Возведение линейной комбинации матриц в степень: <code>(3A - 0.5B)^5</code></li>
+                <li>Произведение транспонированной матрицы на исходную: <code>A^TA</code></li>
+                <li>Обратная матрица в квадрате для B: <code>B^-2</code></li>
+            </ul>
+            <h2>Что такое матрица?</h2>
+            <p>Матрицей размера <code>n×m</code> называется прямоугольная таблица специального вида, состоящая из
+                <code>n</code> строк и <code>m</code> столбцов, заполненная числами. Матрицы обозначаются заглавными
+                латинскими буквами. При необходимости размер записывается следующим образом:
+                <code>A<sub>n×m</sub></code>.</p>
+            <h3>Примеры матриц</h3>
+            <div class='scroll-block'>
+                E<sub>4×4</sub> =
+                <div class="matrix matrix-inline matrix-draggable" id="example-matrix-1" draggable='true'>
+                    <div class="matrix-brackets">
+                        <table>
+                            <tr>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                &emsp;&emsp;A<sub>3×3</sub>=
+                <div class="matrix matrix-inline matrix-draggable" id="example-matrix-2" draggable='true'>
+                    <div class="matrix-brackets">
+                        <table>
+                            <tr>
+                                <td>-4<div class='fraction'>
+                                        <div class='numerator'>1</div>
+                                        <div class='denumerator'>3</div>
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <td>-1</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>-<div class="fraction">
+                                        <div class="numerator">2</div>
+                                        <div class="denumerator">5</div>
+                                    </div>
+                                </td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>2.5</td>
+                                <td>-0.025</td>
+                                <td>-2</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                &emsp;&emsp;A<sub>4×4</sub> =
+                <div class="matrix matrix-inline matrix-draggable" id="example-matrix-3" draggable='true'>
+                    <div class="matrix-brackets">
+                        <table>
+                            <tr>
+                                <td>2</td>
+                                <td>-1</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>-3</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>31</td>
+                                <td>-19</td>
+                                <td>3</td>
+                                <td>-4</td>
+                            </tr>
+                            <tr>
+                                <td>-23</td>
+                                <td>14</td>
+                                <td>-2</td>
+                                <td>3</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <h3>Элементы матрицы</h3>
+            <p>Элементы <code>A</code> обозначаются <code>a<sub>ij</sub></code>, где <code>i</code> - номер строки, в
+                которой находится элемент, <code>j</code> - номер столбца.</p>
+            <h2>Некоторые теоретические сведения</h2>
+            <p><b>Транспонирование</b> — операция, при которой строки и столбцы матрицы меняются местами:
+                <code>a<sup>T</sup><sub>ij</sub> = a<sub>ji</sub></code></p>
+            <p><b>Главная диагональ квадратной матрицы</b> — диагональ, которая проходит через верхний левый и нижний
+                правый углы. Элементы главной диагонали — <code>a<sub>ii</sub></code></p>
+            <p><b>Единичная матрица E<sub>n×n</sub></b> — квадратная матрица из n столбцов и n строк с единицами на
+                главной диагонали и нулями вне её.</p>
+            <p><b>Ранг</b> — это максимальное количество линейно независимых строк (столбцов) этой матрицы. Обозначение:
+                <code>rank(A)</code></p>
+            <p><b>След</b> — это сумма элементов, находящихся на её главной диагонали. Обозначение: <code>tr(A)</code>
+                или <code>track(A)</code></p>
+            <p><b>Умножение матрицы на число</b> — матрица такой же размерности, что и исходная, каждый элемент которой
+                является произведением соответствующего элемента исходной матрицы на заданное число.</p>
+            <p><b>Возведение в степень</b> — умножение заданной матрицы саму на себя n-ое количество раз, где n –
+                степень, в которую необходимо возвести исходную матрицу. Обозначение: <code>A<sup>n</sup></code></p>
+            <p><b>Обратная матрица A<sup>−1</sup></b> — матрица, произведение которой на исходную матрицу A равно
+                единичной матрице: <code>A<sup>-1</sup>×A = A×A<sup>-1</sup> = E</code></p>
+            <p><b>Треугольная матрица</b> — квадратная матрица, у которой выше (верхнетреугольная матрица) или ниже
+                (нижнетреугольная матрица) главной диагонали находятся нули.</p>
+            <p><b>LU-разложение</b> — представление матрицы в виде произведения двух матриц L и U, где L —
+                нижнетреугольная матрица с еденичной диагональю, а U — верхнетреугольная матрица. <code>A = L·U</code>
+            </p>
+            <p><b>Сложение матриц A<sub>n×m</sub> и B<sub>n×m</sub></b> — матрица C<sub>n×m</sub>, получаемая попарной
+                суммой соответствующих элементов матриц A и B, то есть каждый элемент матрицы C равен:
+                <code>с<sub>ij</sub>=a<sub>ij</sub>+b<sub>ij</sub></code></p>
+            <p><b>Разность матриц A<sub>n×m</sub> и B<sub>n×m</sub></b> — матрица C<sub>n×m</sub>, получаемая попарной
+                разностью соответствующих элементов матриц A и B, то есть каждый элемент матрицы C равен:
+                <code>с<sub>ij</sub>=a<sub>ij</sub>-b<sub>ij</sub></code></p>
+            <p><b>Умножение матриц A<sub>n×k</sub> и B<sub>k×m</sub></b> — матрица C<sub>n×m</sub>, у которой элемент
+                (c<sub>ij</sub>) равен сумме произведений элементов i-той строки матрицы A на соответствующие элементы
+                j-того столбца матрицы B:
+                <code>c<sub>ij</sub> = a<sub>i1</sub>·b<sub>1j</sub> + a<sub>i2</sub>·b<sub>2j</sub> + ... + a<sub>ik</sub>·b<sub>kj</sub></code>
+            </p> -->
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/matrixs-operations.js"></script>
+    <script src="js/fraction.js"></script>
+    <script src="js/matrix-functions.js"></script>
+    <script src="js/matrix.js"></script>
+    <div class="footer">
+        
+        <!-- TODO дописать футер -->
+    </div>
+</body>
+
+</html>
