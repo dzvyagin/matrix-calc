@@ -1439,8 +1439,8 @@ $(document).ready(function() {
             $("#errors-block").addClass("no-display");
             $(".calc-result").html(drawResult(result, (option != "det" && option != "rank" && option != "track"), option) + $(".calc-result").html());
             scrollTo('#result');
-            if (document.querySelectorAll('.calc-result-hist.no-padding').length > 1)
-                document.querySelectorAll('.calc-result-hist.no-padding')[1].remove();
+            if (document.querySelectorAll('.calc-result-hist').length > 1)
+                document.querySelectorAll('.calc-result-hist')[1].remove();
             $(".calc-result-hist .calc-result-hist-buttons .move-to-a").click(function() {
                 var x = getMatrix($(this).parent().parent().find(".main-solve .matrix:last"), false);
                 setMatrix("#first-matrix", x);
